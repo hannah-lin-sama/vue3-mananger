@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
 import LeftMenu from './components/LeftMenu/index.vue'
 </script>
 
@@ -14,7 +14,6 @@ import LeftMenu from './components/LeftMenu/index.vue'
         <t-content>
           <div class="manage-page">
             <RouterView />
-
           </div>
         </t-content>
       </t-layout>

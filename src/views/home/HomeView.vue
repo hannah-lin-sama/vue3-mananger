@@ -6,6 +6,5 @@ import MainCard from './components/MainCard.vue'
   <main>
     <div>Home</div>
     <main-card></main-card>
-
   </main>
 </template>

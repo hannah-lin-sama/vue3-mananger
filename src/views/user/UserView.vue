@@ -49,15 +49,12 @@ const onClose = () => {
 </script>
 
 <template>
-
   <div class="page-tile">用户管理</div>
-
   <t-row :gutter="16" class="page-operation">
     <t-col>
       <AccessIconButton title="新增用户" @click="handleAdd"></AccessIconButton>
     </t-col>
   </t-row>
-
   <CommonTable row-key="id" :columns="columns" :data="data" actions="actions" :pagination="pagination">
     <template #actions="{ row }">
       <t-space size="4">
