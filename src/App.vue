@@ -1,7 +1,5 @@
 <script setup lang="ts">
-
-import HelloWorld from './components/HelloWorld.vue'
-import Layout from '@/layouts/index.vue'
+import Layout from '@/layouts/LayoutView.vue'
 </script>
 
 <template>

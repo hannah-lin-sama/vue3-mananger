@@ -1,5 +1,4 @@
 <script setup>
-import { defineEmits } from 'vue'
 import { AddIcon } from 'tdesign-icons-vue-next';
 const props = defineProps({
   title: String,

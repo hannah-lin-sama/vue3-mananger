@@ -1,0 +1,48 @@
+<template>
+  <div>
+    <div>{{ title }}</div>
+    <div>
+      <button @click="handleClick">点击切换</button>
+      <KeepAlive ref="keepaliveRef" :include="['RoleA', 'RoleB']">
+        <component :is="!!currentView ? 'RoleB' : 'RoleA'" />
+      </KeepAlive>
+    </div>
+    <div>
+      <button @click="getInstance">获取组件实例</button>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+import { ref } from "vue";
+import RoleA from "./components/RoleA.vue";
+import RoleB from "./components/RoleB.vue";
+export default {
+  name: "RoleView",
+  components: {
+    RoleA,
+    RoleB,
+  },
+  setup(props, { emit, slots, expose, attrs }) {
+    console.log("RoleView setup", props);
+    const currentView = ref(false);
+    const keepaliveRef = ref();
+    const handleClick = () => {
+      console.log("keepaliveRef", keepaliveRef.value);
+      currentView.value = !currentView.value;
+    };
+
+    const getInstance = () => {
+      const instance = keepaliveRef.value;
+      console.log("instance", instance);
+    };
+    return {
+      title: "Role View",
+      currentView,
+      handleClick,
+      getInstance,
+      keepaliveRef
+    };
+  },
+};
+</script>

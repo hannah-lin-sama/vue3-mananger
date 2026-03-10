@@ -7,10 +7,10 @@ export const MENU_DATA = [
     access: 'home'
   },
   {
-    id: 'products',
-    label: '项目信息',
-    path: '/projects',
-    access: 'project'
+    id: 'dashboard',
+    label: 'Dashboard',
+    path: '/dashboard',
+    access: 'dashboard'
   },
   {
     id: 'user',

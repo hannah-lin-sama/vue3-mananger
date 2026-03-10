@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { RouterView } from 'vue-router'
-import LeftMenu from './components/LeftMenu/index.vue'
-</script>
-
 <template>
   <main>
     <t-layout>
@@ -21,3 +16,12 @@ import LeftMenu from './components/LeftMenu/index.vue'
 
   </main>
 </template>
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import LeftMenu from './components/LeftMenu/index.vue'
+
+window.addEventListener('popstate', () => {
+  console.log('popstate---')
+})
+</script>
+
