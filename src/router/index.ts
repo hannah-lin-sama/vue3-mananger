@@ -1,19 +1,32 @@
-import { createRouter, createWebHistory } from 'vue-router'
-console.log('window.location',window.location)
+import { createRouter, createWebHistory,createWebHashHistory } from 'vue-router'
+
 const history = createWebHistory(import.meta.env.VITE_BASE_URL)
-console.log('history',history)
+// const history = createWebHashHistory('#');
+
+console.log('history', history)
+
 const router = createRouter({
   history,
   routes: [
     {
       path: '/',
       name: 'index',
-      component: () => import('@/views/home/HomeView.vue')
+      alias: ['/home'],
+      // HomeView 组件内包含 <router-view> 和 <router-view name="dashboard">
+      component: () => import('@/views/home/HomeView.vue'),
+      children:[{
+        path: '',
+        name: 'home',
+        components: {
+          default: () => import('@/views/home/MainCard.vue'),
+          dashboard: () => import('@/views/home/DashBoard.vue'),
+       }
+      }]
     },
-     {
-      path: '/home',
-      name: 'home',
-      component: () => import('@/views/home/HomeView.vue')
+    {
+      path: '/lists/:type?',
+      name: 'lists',
+      component: () => import('@/views/lists/ListView.vue')
     },
     {
       path: '/about',
@@ -26,14 +39,39 @@ const router = createRouter({
     {
       path: '/user',
       name: 'user',
-      component: () => import('@/views/user/UserView.vue')
+      component: () => import('@/views/user/UserView.vue'),
+      children: [ // 嵌套路由
+        {
+          path: 'lists',
+          name: 'user-list',
+          component: () => import('@/views/user/UserList.vue')
+        },
+        {
+          path: ':id',
+          // name: 'user-detail',
+          component: () => import('@/views/user/UserDetail.vue')
+        }
+      ]
     },
-      {
+    {
       path: '/role',
       name: 'role',
-      component: () => import('@/views/role/RoleView.vue')
+      component: () => import('@/views/role/RoleView.vue'),
     },
+    {
+        path: '/role/:id',
+        name: 'role-detail',
+        component: () => import('@/views/role/RoleDetail.vue')
+      },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import('@/views/dashboard/DashBoard.vue')
+    },
+
   ]
 })
 
+console.log('router', router)
 export default router
+

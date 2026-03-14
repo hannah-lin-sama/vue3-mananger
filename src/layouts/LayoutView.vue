@@ -8,20 +8,20 @@
         <t-header>Header</t-header>
         <t-content>
           <div class="manage-page">
-            <RouterView />
+            <RouterView v-slot="{ Component, route }">
+              <component :is="Component" :key="route.path" />
+            </RouterView>
           </div>
         </t-content>
       </t-layout>
     </t-layout>
-
   </main>
 </template>
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import LeftMenu from './components/LeftMenu/index.vue'
+import { RouterView } from "vue-router";
+import LeftMenu from "./components/LeftMenu/index.vue";
 
-window.addEventListener('popstate', () => {
-  console.log('popstate---')
-})
+window.addEventListener("popstate", () => {
+  console.log("popstate---");
+});
 </script>
-

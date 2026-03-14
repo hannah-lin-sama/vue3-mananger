@@ -18,7 +18,7 @@ const list = [
 ];
 
 const handleClick = (item: any) => {
-  console.log('item', item);
+  console.log("item", item);
 
   router.push(item.path);
 };
@@ -27,18 +27,27 @@ const handleClick = (item: any) => {
 <template>
   <div>
     <t-space>
-      <li v-for="(value, key) in list">
-        <t-card class="info-card" bordered="false" :title="value.title" :subtitle="value.subTitle">
+      <li v-for="value in list" :key="value.path">
+        <t-card
+          class="info-card"
+          :bordered="false"
+          :title="value.title"
+          :subtitle="value.subTitle"
+        >
           <template #footer>
             <t-button size="large" @click="handleClick(value)">
               GO Immediately
-            </t-button></template>
+            </t-button></template
+          >
         </t-card>
       </li>
     </t-space>
+
+    <router-view name="dashboard"></router-view>
   </div>
 </template>
-<style>
+
+<style scoped>
 .info-card {
   max-width: 480px;
 }

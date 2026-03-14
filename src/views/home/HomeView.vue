@@ -1,10 +1,6 @@
-<script setup lang="ts">
-import MainCard from './components/MainCard.vue'
-</script>
-
 <template>
-  <main>
-    <div>Home</div>
-    <main-card></main-card>
-  </main>
+  <div>
+    <router-view></router-view>
+    <router-view name="dashboard"></router-view>
+  </div>
 </template>

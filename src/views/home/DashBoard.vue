@@ -1,7 +1,7 @@
 <template>
   <div>
-    <p>User View</p>
-    <RouterView></RouterView>
+    <p>Welcome to the Dashboard</p>
   </div>
 </template>
+
 <script setup lang="ts"></script>

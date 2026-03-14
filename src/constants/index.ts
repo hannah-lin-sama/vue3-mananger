@@ -23,5 +23,11 @@ export const MENU_DATA = [
     label: 'role',
     path: '/role',
     access: 'role'
+  },
+    {
+    id: 'lists',
+    label: 'lists',
+    path: '/lists',
+    access: 'lists'
   }
 ]
