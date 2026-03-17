@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useRouter } from "vue-router";
+import { useRouter  } from "vue-router";
 
 const router = useRouter();
 const list = [
@@ -19,9 +19,37 @@ const list = [
 
 const handleClick = (item: any) => {
   console.log("item", item);
-
+  // debugger
   router.push(item.path);
 };
+
+defineOptions({
+  name: "MainCard",
+
+  // beforeRouteLeave (to, from, next) {
+  //   console.log("beforeRouteLeave-to", to);
+  //   console.log("beforeRouteLeave-from", from);
+  //   next();
+  // },
+  // beforeRouteEnter (to, from, next) {
+  //   console.log("beforeRouteEnter-to", to);
+  //   console.log("beforeRouteEnter-from", from);
+  //   // 无法访问 setup 中的变量  
+  //   next(vm => {
+  //     console.log("beforeRouteEnter-vm", vm);
+  //   });
+  // },
+  // beforeRouteUpdate (to, from, next) {
+  //   console.log("beforeRouteUpdate-to", to);
+  //   console.log("beforeRouteUpdate-from", from);
+  //   next();
+  // }
+})
+
+// 暴露变量/方法，让守卫能访问（关键！）
+defineExpose({
+  
+})
 </script>
 
 <template>

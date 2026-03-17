@@ -11,6 +11,19 @@
     </RouterView>
   </div>
 </template>
+
+<script setup lang="ts">
+
+defineOptions({
+  name: 'UserDetail',
+  beforeRouteLeave (to, from,) {
+    console.log('xxchildren-leave', to);
+   
+   return true
+  }
+})
+</script>
+
 <style scoped>
 .fade-enter-active,
 .fade-leave-active {
@@ -23,12 +36,3 @@
 }
 </style>
 
-
-
-<script setup lang="ts">
-import { useRoute } from 'vue-router'
-
-const route = useRoute()
-
-console.log('route', route)
-</script>

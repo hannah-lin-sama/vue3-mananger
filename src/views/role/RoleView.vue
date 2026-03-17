@@ -11,7 +11,10 @@
       <button @click="getInstance">获取组件实例</button>
     </div>
     <p>
-      <router-link to="/role/123" v-slot="{}"> 角色详情 </router-link> &nbsp;
+      <router-link to="/role/123" v-slot="{ href }">
+        角色详情{{ href }} 信息
+      </router-link>
+      &nbsp;
       <router-link to="/role/1212">角色详情</router-link>
     </p>
   </div>
