@@ -16,9 +16,18 @@
 
 defineOptions({
   name: 'UserDetail',
+  // 路由进入守卫
+  beforeRouteEnter (to, from) {
+    console.log('user-detail-enter', to);
+    return true
+  },
+  beforeRouteUpdate (to, from) {
+    console.log('user-detail-update', to);
+    return true
+  },
+  // 路由离开守卫
   beforeRouteLeave (to, from,) {
-    console.log('xxchildren-leave', to);
-   
+    console.log('user-detail-leave', to);
    return true
   }
 })

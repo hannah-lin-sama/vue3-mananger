@@ -48,7 +48,7 @@ const onClose = () => {
 </script>
 
 <template>
-  <div class="page-tile">用户管理</div>
+  <h3>用户管理</h3>
   <t-row :gutter="16" class="page-operation">
     <t-col>
       <AccessIconButton title="新增用户" @click="handleAdd"></AccessIconButton>

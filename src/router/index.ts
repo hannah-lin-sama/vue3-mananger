@@ -78,21 +78,24 @@ const router = createRouter({
         {
           path: 'lists',
           name: 'user-list',
-          component: () => import('@/views/user/UserList.vue')
+          component: () => import('@/views/user/UserList.vue'),
+          beforeEnter: (to, from) => {
+            console.log('user-list独享路由', to,from)
+            return true
+          }
         },
         {
           path: ':id',
           // name: 'user-detail',
           component: () => import('@/views/user/UserDetail.vue'),
           beforeEnter: (to, from) => {
-            console.log('xx-----')
+            console.log('user-detail独享路由', to,from)
             return true
           }
         }
       ],
       beforeEnter: (to, from) => {
-        console.log('beforeEnter-to', to)
-        console.log('beforeEnter-from', from)
+        console.log('user-view独享路由', to,from)
         return true
       },
     },
@@ -157,24 +160,23 @@ const router = createRouter({
 
 // 全局前置守卫
 router.beforeEach((to, from) => {
-  // console.log('router.beforeEach-to', to)
-  // console.log('router.beforeEach-from', from)
+  console.log('全局前置守卫', to,from)
   return true
 })
 
 // 全局解析守卫
 router.beforeResolve((to, from) => {
-  // console.log('router.beforeResolve-to', to)
-  // console.log('router.beforeResolve-from', from)
+    console.log('全局解析守卫', to,from)
   return true
 })
 
 // 全局后置守卫
 router.afterEach((to, from, failure) => {
   if(failure) {
-    console.log('router.afterEach-failure', failure);
+    console.log('全局后置守卫-failure', failure);
     return;
   }
+  console.log('全局后置守卫', to,from)
   document.title = to.meta.title ? `Vue3 管理端 ｜ ${to.meta.title}` : `Vue3 管理端`;
 })
 
