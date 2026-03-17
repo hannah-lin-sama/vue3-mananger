@@ -29,5 +29,11 @@ export const MENU_DATA = [
     label: 'lists',
     path: '/lists',
     access: 'lists'
+  },
+  {
+    id: 'data-view',
+    label: 'data-view',
+    path: '/data-view',
+    access: 'data-view'
   }
 ]

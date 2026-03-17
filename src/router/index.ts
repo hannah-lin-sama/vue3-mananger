@@ -141,6 +141,16 @@ const router = createRouter({
       }]
 
     },
+    {
+      path: '/data-view',
+      name: 'data-view',
+      component: () => import('@/views/dataview/DataView.vue'),
+      meta: {
+        title: '数据管理',
+        icon: 'data-view',
+        roles: ['admin']
+      },
+    }
   ]
 })
 
