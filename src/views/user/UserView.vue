@@ -3,7 +3,8 @@
     <div class="title">User View</div>
     <p>
       <span class="btn" @click="handleClick">list</span>&nbsp;&nbsp;
-      <span class="btn" @click="handleClick2">detail</span>
+      <span class="btn" @click="handleClick2">detail</span>&nbsp;&nbsp;
+      <span class="btn" @click="handleClick3">data-view</span>&nbsp;&nbsp;
     </p>
     <RouterView></RouterView>
   </div>
@@ -11,17 +12,24 @@
 <script setup lang="ts">
 import { useRouter } from "vue-router";
 const router = useRouter();
+
 const handleClick = () => {
+  // 命名路由
   router.push({
     name: "user-list",
   });
 };
 
 const handleClick2 = () => {
-  console.log('xx', Promise.resolve())
-  // router.push({
-  //   path: "/user/123",
-  // });
+  // 对象路由（path模式）
+  router.push({
+    path: "/user/123",
+  });
+};
+
+const handleClick3 = () => {
+  // 字符路由
+  router.push("/data-view");
 };
 
 defineOptions({

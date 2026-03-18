@@ -1,10 +1,6 @@
 <template>
   <div class="project-list">
-    <div 
-      v-for="(project, index) in projects" 
-      :key="index" 
-      class="project-item"
-    >
+    <div v-for="(project, index) in projects" :key="index" class="project-item">
       <div class="project-icon" :style="{ backgroundColor: project.iconColor }">
         <i :class="project.icon"></i>
       </div>
@@ -27,7 +23,8 @@
 </template>
 
 <script lang="ts">
-import { ref } from 'vue';
+import { ref } from "vue";
+import { onBeforeRouteLeave, onBeforeRouteUpdate } from "vue-router";
 
 interface Project {
   name: string;
@@ -38,29 +35,37 @@ interface Project {
 }
 
 export default {
-  name: 'ProjectList',
+  name: "ProjectList",
   setup() {
+    onBeforeRouteLeave((to, from) => {
+      console.log("project-list-leave", to, from);
+      return true;
+    });
+    onBeforeRouteUpdate((to, from) => {
+      console.log("project-list-update", to, from);
+      return true;
+    });
     const projects = ref<Project[]>([
       {
-        name: 'Copyright Project',
-        status: 'Not Paid',
-        rate: '$10',
-        icon: 'fas fa-copyright',
-        iconColor: '#3b82f6'
+        name: "Copyright Project",
+        status: "Not Paid",
+        rate: "$10",
+        icon: "fas fa-copyright",
+        iconColor: "#3b82f6",
       },
       {
-        name: 'Web Design Project',
-        status: 'Paid',
-        rate: '$10',
-        icon: 'fas fa-code',
-        iconColor: '#10b981'
-      }
+        name: "Web Design Project",
+        status: "Paid",
+        rate: "$10",
+        icon: "fas fa-code",
+        iconColor: "#10b981",
+      },
     ]);
 
     return {
-      projects
+      projects,
     };
-  }
+  },
 };
 </script>
 
@@ -172,11 +177,11 @@ export default {
     flex-direction: column;
     align-items: flex-start;
   }
-  
+
   .project-icon {
     margin-bottom: 12px;
   }
-  
+
   .project-actions {
     margin-left: 0;
     margin-top: 12px;

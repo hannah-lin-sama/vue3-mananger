@@ -1,6 +1,6 @@
 <template>
-  <div >
-  <p>User Detail View</p>
+  <div>
+    <p>User Detail View</p>
     <!-- 插槽接收 Component（路由组件VNode）和 route（路由信息） -->
     <RouterView v-slot="{ Component, route }">
       <!-- 过渡动画 -->
@@ -13,24 +13,23 @@
 </template>
 
 <script setup lang="ts">
-
 defineOptions({
-  name: 'UserDetail',
+  name: "UserDetail",
   // 路由进入守卫
-  beforeRouteEnter (to, from) {
-    console.log('user-detail-enter', to);
-    return true
+  beforeRouteEnter(to, from) {
+    console.log("user-detail-enter", to, from);
+    return true;
   },
-  beforeRouteUpdate (to, from) {
-    console.log('user-detail-update', to);
-    return true
+  beforeRouteUpdate(to, from) {
+    console.log("user-detail-update", to, from);
+    return true;
   },
   // 路由离开守卫
-  beforeRouteLeave (to, from,) {
-    console.log('user-detail-leave', to);
-   return true
-  }
-})
+  beforeRouteLeave(to, from) {
+    console.log("user-detail-leave", to, from);
+    return true;
+  },
+});
 </script>
 
 <style scoped>
@@ -44,4 +43,3 @@ defineOptions({
   opacity: 0;
 }
 </style>
-
