@@ -28,7 +28,10 @@ export default defineComponent({
   setup() {
     const router = useRouter();
     const handleClick = () => {
-      router.push("/404?from=not-found");
+      router.push("/404?from=not-found").then(() => {
+        console.log("push xxx");
+      });
+      console.log("push result");
     };
     return {
       handleClick,

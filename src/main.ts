@@ -3,7 +3,6 @@ import './assets/main.css'
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 import TDesign from 'tdesign-vue-next';
-// import naive from "naive-ui";
 import App from './App.vue'
 import router from './router'
 import 'tdesign-vue-next/es/style/index.css';
@@ -11,7 +10,6 @@ import 'tdesign-vue-next/es/style/index.css';
 const app = createApp(App)
 
 app.use(createPinia())
-// app.use(naive)
 app.use(router)
 app.use(TDesign);
 
