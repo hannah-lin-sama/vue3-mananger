@@ -1,7 +1,7 @@
 <template>
   <main>
     <el-container>
-      <el-aside> <LeftMenu></LeftMenu></el-aside>
+      <el-aside width="200px"> <LeftMenu></LeftMenu></el-aside>
       <el-container>
         <el-header>Header</el-header>
         <el-main>

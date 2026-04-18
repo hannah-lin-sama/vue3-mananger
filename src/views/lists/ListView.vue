@@ -1,5 +1,30 @@
 <template>
   <div>
+    <h3>内联函数</h3>
+    <div>
+      <p>count: {{ count }}</p>
+      <button @click="count++">点击我</button>
+      <button
+        @click="
+          count--;
+          console.log(count);
+        "
+      >
+        点击我
+      </button>
+      <button
+        @click="
+          (event) => {
+            count++;
+            console.log(event, count);
+          }
+        "
+      >
+        点击我
+      </button>
+      <button @click="handleClick($event, 'click')">点击我</button>
+    </div>
+
     <h3>点击事件 DOM 修饰符</h3>
     <div @click="handleDivClick">
       <!-- 点击事件1 -->
@@ -36,7 +61,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 console.log("ListView mounted");
-
+const count = ref(0);
 const list = ref([
   {
     id: 1,
@@ -62,8 +87,9 @@ const handleDivClick = (event: PointerEvent) => {
   console.log("点击了div", event);
 };
 
-const handleClick = (event: PointerEvent) => {
-  console.log("点击了按钮", event);
+const handleClick = (event: PointerEvent, type: string) => {
+  count.value++;
+  console.log("点击了按钮", event, type);
 };
 
 const handleClick2 = (event: PointerEvent) => {
@@ -93,10 +119,10 @@ const handleClick6 = () => {
 <style scoped>
 /* 容器样式 */
 div {
-  padding: 20px;
+  /* padding: 20px; */
   background-color: #f5f5f5;
   border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); */
 }
 
 /* 标题样式 */
@@ -117,7 +143,7 @@ div > div {
   padding: 20px;
   background-color: white;
   border-radius: 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08); */
 }
 
 /* 基础按钮样式 */
