@@ -1,20 +1,14 @@
 <template>
-  <div class="page-tile">
-    <ProjectList />
-
-    <p @click="handleClick">Or go back to the homepage.</p>
-  </div>
+  <div class="page-tile"></div>
 </template>
 <script lang="ts" setup>
-import ProjectList from "./components/ProjectList.vue";
+// import { useRouter } from "vue-router";
 
-import { useRouter } from "vue-router";
+// const router = useRouter();
 
-const router = useRouter();
-
-const handleClick = () => {
-  router.push("/dashboard?from=dashboard");
-};
+// const handleClick = () => {
+//   router.push("/dashboard?from=dashboard");
+// };
 
 defineOptions({
   name: "DashBoard",

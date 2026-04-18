@@ -1,6 +1,29 @@
-<script setup lang="ts">
-import { useRouter  } from "vue-router";
+<template>
+  <div>
+    <el-space>
+      <li v-for="value in list" :key="value.path">
+        <el-card
+          class="info-card"
+          :bordered="false"
+          :title="value.title"
+          :subtitle="value.subTitle"
+        >
+          <template #footer>
+            <el-button size="large" @click="handleClick(value)">
+              GO Immediately
+            </el-button></template
+          >
+        </el-card>
+      </li>
+    </el-space>
 
+    <router-view name="dashboard"></router-view>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { useRouter } from "vue-router";
+import { ElCard, ElSpace } from "element-plus";
 const router = useRouter();
 const list = [
   {
@@ -34,7 +57,7 @@ defineOptions({
   // beforeRouteEnter (to, from, next) {
   //   console.log("beforeRouteEnter-to", to);
   //   console.log("beforeRouteEnter-from", from);
-  //   // 无法访问 setup 中的变量  
+  //   // 无法访问 setup 中的变量
   //   next(vm => {
   //     console.log("beforeRouteEnter-vm", vm);
   //   });
@@ -44,36 +67,11 @@ defineOptions({
   //   console.log("beforeRouteUpdate-from", from);
   //   next();
   // }
-})
+});
 
 // 暴露变量/方法，让守卫能访问（关键！）
-defineExpose({
-  
-})
+defineExpose({});
 </script>
-
-<template>
-  <div>
-    <t-space>
-      <li v-for="value in list" :key="value.path">
-        <t-card
-          class="info-card"
-          :bordered="false"
-          :title="value.title"
-          :subtitle="value.subTitle"
-        >
-          <template #footer>
-            <t-button size="large" @click="handleClick(value)">
-              GO Immediately
-            </t-button></template
-          >
-        </t-card>
-      </li>
-    </t-space>
-
-    <router-view name="dashboard"></router-view>
-  </div>
-</template>
 
 <style scoped>
 .info-card {

@@ -1,18 +1,18 @@
 <script setup>
+import { ElButton } from "element-plus";
 const props = defineProps({
   title: String,
-})
+});
 
-const emit = defineEmits(['click']);
+const emit = defineEmits(["click"]);
 
 const handleClick = () => {
-  emit('click');
+  emit("click");
 };
-
 </script>
 
 <template>
-  <t-button variant="text" theme="primary" size="small" @click="handleClick">
+  <el-button variant="text" theme="primary" size="small" @click="handleClick">
     {{ props.title }}
-  </t-button>
+  </el-button>
 </template>

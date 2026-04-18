@@ -43,3 +43,30 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+## axios 问题
+
+Axios 遭受了严重的供应链投毒攻击‌
+
+攻击时间‌：2026年3月31日（UTC），对应北京时间约3月31日8:00–12:00。
+
+‌受影响版本‌：
+
+- axios@1.14.1
+- axios@0.30.4
+
+‌攻击方式‌：
+
+- 攻击者‌劫持了 Axios 核心维护者 @jasonsaayman 的 npm 账号‌。
+- 绕过正常的 CI/CD 发布流程，‌手动向 npm 仓库推送恶意版本‌。
+- 在 Axios 包中注入‌虚假依赖 `plain-crypto-js@4.2.1‌`，该依赖无合法用途，仅用于执行恶意脚本。
+
+恶意行为‌：
+
+- 安装时自动触发 postinstall 脚本，下载并运行‌跨平台远程控制木马（RAT）‌。
+- 支持 ‌Windows、macOS、Linux‌ 全平台感染。
+- 执行后‌自毁痕迹‌，删除自身文件并替换为干净版本，难以事后发现。
+
+```bash
+npm install --ignore-scripts
+```

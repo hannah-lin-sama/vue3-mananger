@@ -49,11 +49,11 @@ const onClose = () => {
 
 <template>
   <h3>用户管理</h3>
-  <t-row :gutter="16" class="page-operation">
-    <t-col>
+  <el-row :gutter="16" class="page-operation">
+    <el-col>
       <AccessIconButton title="新增用户" @click="handleAdd"></AccessIconButton>
-    </t-col>
-  </t-row>
+    </el-col>
+  </el-row>
   <CommonTable
     row-key="id"
     :columns="columns"
@@ -62,10 +62,10 @@ const onClose = () => {
     :pagination="pagination"
   >
     <template #actions="{ row }">
-      <t-space size="4">
+      <el-space size="4">
         <AccessButton title="编辑" @click="handleEdit(row)"></AccessButton>
         <AccessButton title="删除" @click="handleDel(row)"></AccessButton>
-      </t-space>
+      </el-space>
     </template>
   </CommonTable>
   <FromUser v-if="visible" @onClose="onClose" :current="current"></FromUser>

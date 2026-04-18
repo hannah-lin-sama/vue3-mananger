@@ -1,20 +1,20 @@
 <script setup>
-import { AddIcon } from 'tdesign-icons-vue-next';
+import { ElButton } from "element-plus";
+
 const props = defineProps({
   title: String,
-})
+});
 
-const emit = defineEmits(['click']);
+const emit = defineEmits(["click"]);
 
 const handleClick = () => {
-  emit('click');
+  emit("click");
 };
-
 </script>
 
 <template>
-  <t-button theme="primary" size="large" @click="handleClick">
+  <el-button theme="primary" size="large" @click="handleClick">
     <template #icon><add-icon /></template>
     {{ props.title }}
-  </t-button>
+  </el-button>
 </template>
