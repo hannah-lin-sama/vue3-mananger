@@ -1,4 +1,3 @@
-
 export const MENU_DATA = [
   {
     id: 'hone',
@@ -24,7 +23,7 @@ export const MENU_DATA = [
     path: '/role',
     access: 'role'
   },
-    {
+  {
     id: 'lists',
     label: 'lists',
     path: '/lists',

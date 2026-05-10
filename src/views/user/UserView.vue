@@ -10,45 +10,45 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useRouter } from "vue-router";
-const router = useRouter();
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const handleClick = () => {
   // 命名路由
   router.push({
-    name: "user-list",
-  });
-};
+    name: 'user-list'
+  })
+}
 
 const handleClick2 = () => {
   // 对象路由（path模式）
   router.push({
-    path: "/user/123",
-  });
-};
+    path: '/user/123'
+  })
+}
 
 const handleClick3 = () => {
   // 字符路由
-  router.push("/data-view");
-};
+  router.push('/data-view')
+}
 
 defineOptions({
-  name: "UserView",
+  name: 'UserView',
   // 路由进入守卫
   beforeRouteEnter(to, from) {
-    console.log("user-view-enter", to);
-    return true;
+    console.log('user-view-enter', to)
+    return true
   },
   beforeRouteUpdate(to, from) {
-    console.log("user-view-update", to);
-    return true;
+    console.log('user-view-update', to)
+    return true
   },
   // 路由离开守卫
   beforeRouteLeave(to, from) {
-    console.log("user-view-leave", to);
-    return true;
-  },
-});
+    console.log('user-view-leave', to)
+    return true
+  }
+})
 </script>
 <style scoped>
 .title {

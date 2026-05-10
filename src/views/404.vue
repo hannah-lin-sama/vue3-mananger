@@ -9,33 +9,33 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
+import { defineComponent } from 'vue'
+import { useRouter } from 'vue-router'
 export default defineComponent({
-  name: "NotFound",
+  name: 'NotFound',
   beforeRouteEnter(to, from) {
-    console.log("not-found-enter", to, from);
-    return true;
+    console.log('not-found-enter', to, from)
+    return true
   },
   beforeRouteUpdate(to, from) {
-    console.log("not-found-update", to, from);
-    return true;
+    console.log('not-found-update', to, from)
+    return true
   },
   beforeRouteLeave(to, from) {
-    console.log("not-found-leave", to, from);
-    return true;
+    console.log('not-found-leave', to, from)
+    return true
   },
   setup() {
-    const router = useRouter();
+    const router = useRouter()
     const handleClick = () => {
-      router.push("/404?from=not-found").then(() => {
-        console.log("push xxx");
-      });
-      console.log("push result");
-    };
+      router.push('/404?from=not-found').then(() => {
+        console.log('push xxx')
+      })
+      console.log('push result')
+    }
     return {
-      handleClick,
-    };
-  },
-});
+      handleClick
+    }
+  }
+})
 </script>

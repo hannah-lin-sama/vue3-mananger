@@ -14,22 +14,22 @@
 
 <script setup lang="ts">
 defineOptions({
-  name: "UserDetail",
+  name: 'UserDetail',
   // 路由进入守卫
   beforeRouteEnter(to, from) {
-    console.log("user-detail-enter", to, from);
-    return true;
+    console.log('user-detail-enter', to, from)
+    return true
   },
   beforeRouteUpdate(to, from) {
-    console.log("user-detail-update", to, from);
-    return true;
+    console.log('user-detail-update', to, from)
+    return true
   },
   // 路由离开守卫
   beforeRouteLeave(to, from) {
-    console.log("user-detail-leave", to, from);
-    return true;
-  },
-});
+    console.log('user-detail-leave', to, from)
+    return true
+  }
+})
 </script>
 
 <style scoped>

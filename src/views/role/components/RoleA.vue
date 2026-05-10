@@ -7,30 +7,30 @@
 </template>
 
 <script lang="ts">
-import { ref, onBeforeUnmount } from "vue";
+import { ref, onBeforeUnmount } from 'vue'
 export default {
-  name: "RoleA",
+  name: 'RoleA',
   setup(props, { emit, slots, expose, attrs }) {
     // console.log("RoleAView setup", props);
     const handleClick = () => {
-      console.log("RoleAView handleClick");
-      count.value++;
-    };
-    const count = ref(0);
+      console.log('RoleAView handleClick')
+      count.value++
+    }
+    const count = ref(0)
 
     onBeforeUnmount(() => {
-      console.log("RoleAView onBeforeUnmount");
-    });
+      console.log('RoleAView onBeforeUnmount')
+    })
     return {
       count,
-      handleClick,
-    };
+      handleClick
+    }
   },
   activated() {
-    console.log("RoleAView onActivated");
+    console.log('RoleAView onActivated')
   },
   deactivated() {
-    console.log("RoleAView onDeactivated");
-  },
-};
+    console.log('RoleAView onDeactivated')
+  }
+}
 </script>

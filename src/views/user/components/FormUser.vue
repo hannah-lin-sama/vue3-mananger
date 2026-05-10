@@ -1,33 +1,33 @@
 <script setup lang="ts">
-import { ElForm } from "element-plus/es/components/form";
-import { reactive, ref } from "vue";
+import { ElForm } from 'element-plus/es/components/form'
+import { reactive, ref } from 'vue'
 
 // 获取父组件传递的props
 const props = defineProps({
-  current: Object,
-});
+  current: Object
+})
 
 // 获取父组件传递的函数
-const emit = defineEmits(["onClose"]);
+const emit = defineEmits(['onClose'])
 
-const form = ref();
+const form = ref()
 
 const formData = reactive({
-  ...props.current,
-});
+  ...props.current
+})
 
 const onClose = () => {
-  emit("onClose");
-};
+  emit('onClose')
+}
 
 const onConfirm = () => {
   // 执行表单实例的submit方法
-  form.value && form.value.submit();
-};
+  form.value && form.value.submit()
+}
 
 const submit = () => {
-  console.log("context", { ...formData });
-};
+  console.log('context', { ...formData })
+}
 </script>
 <template>
   <el-dialog

@@ -1,50 +1,50 @@
 <script setup lang="jsx">
-import CommonTable from "@/components/CommonTable.vue";
-import AccessIconButton from "@/components/AccessIconButton.vue";
-import AccessButton from "@/components/AccessButton.vue";
-import FromUser from "@/views/user/components/FormUser.vue";
-import { ref, reactive } from "vue";
-import { USER_DATA as data } from "@/constants/data";
+import CommonTable from '@/components/CommonTable.vue'
+import AccessIconButton from '@/components/AccessIconButton.vue'
+import AccessButton from '@/components/AccessButton.vue'
+import FromUser from '@/views/user/components/FormUser.vue'
+import { ref, reactive } from 'vue'
+import { USER_DATA as data } from '@/constants/data'
 
-const visible = ref(false);
-let current = reactive({});
+const visible = ref(false)
+let current = reactive({})
 
 let pagination = reactive({
   defaultCurrent: 1,
   defaultPageSize: 10,
-  total: data.length,
-});
+  total: data.length
+})
 
 const handleEdit = (row) => {
-  console.log("handleEdit", row);
-  visible.value = true;
-  current = row;
-};
+  console.log('handleEdit', row)
+  visible.value = true
+  current = row
+}
 
 const handleDel = (row) => {
-  console.log("handleDel", row);
-};
+  console.log('handleDel', row)
+}
 
 const columns = [
-  { colKey: "id", title: "code" },
-  { colKey: "userName", title: "用户名称" },
-  { colKey: "email", title: "邮箱", ellipsis: true },
-  { colKey: "roleId", title: "所属角色" },
-  { colKey: "status", title: "用户状态" },
+  { colKey: 'id', title: 'code' },
+  { colKey: 'userName', title: '用户名称' },
+  { colKey: 'email', title: '邮箱', ellipsis: true },
+  { colKey: 'roleId', title: '所属角色' },
+  { colKey: 'status', title: '用户状态' },
   {
-    colKey: "actions",
-    title: "操作",
-  },
-];
+    colKey: 'actions',
+    title: '操作'
+  }
+]
 
 const handleAdd = () => {
-  visible.value = true;
-};
+  visible.value = true
+}
 
 const onClose = () => {
-  visible.value = false;
-  current = {};
-};
+  visible.value = false
+  current = {}
+}
 </script>
 
 <template>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ElTable } from "element-plus/es/components/table";
+import { ElTable } from 'element-plus/es/components/table'
 const props = defineProps({
   rowKey: String,
   data: Array,
   columns: Array,
-  pagination: Object,
-});
-console.log("props", props);
+  pagination: Object
+})
+console.log('props', props)
 </script>
 
 <template>

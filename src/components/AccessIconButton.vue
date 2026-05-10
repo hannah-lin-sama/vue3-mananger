@@ -1,15 +1,15 @@
 <script setup>
-import { ElButton } from "element-plus";
+import { ElButton } from 'element-plus'
 
 const props = defineProps({
-  title: String,
-});
+  title: String
+})
 
-const emit = defineEmits(["click"]);
+const emit = defineEmits(['click'])
 
 const handleClick = () => {
-  emit("click");
-};
+  emit('click')
+}
 </script>
 
 <template>

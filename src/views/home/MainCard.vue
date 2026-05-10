@@ -22,32 +22,32 @@
 </template>
 
 <script setup lang="ts">
-import { useRouter } from "vue-router";
-import { ElCard, ElSpace } from "element-plus";
-const router = useRouter();
+import { useRouter } from 'vue-router'
+import { ElCard, ElSpace } from 'element-plus'
+const router = useRouter()
 const list = [
   {
-    title: "用户管理",
+    title: '用户管理',
     subTitle:
-      "用户管理是指对系统内的用户进行创建、管理、授权和权限管理的过程。这包括但不限于用户的添加、删除、编辑等操作",
-    path: "/user",
+      '用户管理是指对系统内的用户进行创建、管理、授权和权限管理的过程。这包括但不限于用户的添加、删除、编辑等操作',
+    path: '/user'
   },
   {
-    title: "角色管理",
+    title: '角色管理',
     subTitle:
-      "允许管理员查看和编辑每个角色的权限设置，这包括但不限于角色的添加、删除、编辑、邀请、同步等操作",
-    path: "/role",
-  },
-];
+      '允许管理员查看和编辑每个角色的权限设置，这包括但不限于角色的添加、删除、编辑、邀请、同步等操作',
+    path: '/role'
+  }
+]
 
 const handleClick = (item: any) => {
-  console.log("item", item);
+  console.log('item', item)
   // debugger
-  router.push(item.path);
-};
+  router.push(item.path)
+}
 
 defineOptions({
-  name: "MainCard",
+  name: 'MainCard'
 
   // beforeRouteLeave (to, from, next) {
   //   console.log("beforeRouteLeave-to", to);
@@ -67,10 +67,10 @@ defineOptions({
   //   console.log("beforeRouteUpdate-from", from);
   //   next();
   // }
-});
+})
 
 // 暴露变量/方法，让守卫能访问（关键！）
-defineExpose({});
+defineExpose({})
 </script>
 
 <style scoped>
