@@ -7,7 +7,7 @@
         <i class="fas fa-upload"></i> Upload Image
       </button>
     </div>
-    
+
     <!-- Image Grid -->
     <div class="image-grid">
       <div class="image-card" v-for="(image, index) in images" :key="index">
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Upload Modal -->
     <div class="modal" v-if="showUploadModal">
       <div class="modal-content">
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Preview Modal -->
     <div class="modal" v-if="showPreviewModal">
       <div class="modal-content preview-modal">
@@ -74,25 +74,25 @@
 </template>
 
 <script lang="ts">
-import { ref, reactive } from 'vue';
+import { ref, reactive } from 'vue'
 
 interface Image {
-  name: string;
-  url: string;
-  size: string;
-  type: string;
+  name: string
+  url: string
+  size: string
+  type: string
 }
 
 export default {
   name: 'DataView',
   setup() {
     // State
-    const showUploadModal = ref(false);
-    const showPreviewModal = ref(false);
-    const fileInput = ref<HTMLInputElement | null>(null);
-    const previewImage = ref<string | null>(null);
-    const selectedImage = ref<Image | null>(null);
-    
+    const showUploadModal = ref(false)
+    const showPreviewModal = ref(false)
+    const fileInput = ref<HTMLInputElement | null>(null)
+    const previewImage = ref<string | null>(null)
+    const selectedImage = ref<Image | null>(null)
+
     // Mock images data
     const images = reactive<Image[]>([
       {
@@ -131,33 +131,33 @@ export default {
         size: '1.1 MB',
         type: 'jpg'
       }
-    ]);
-    
+    ])
+
     // Methods
     const openUploadModal = () => {
-      showUploadModal.value = true;
-      previewImage.value = null;
-    };
-    
+      showUploadModal.value = true
+      previewImage.value = null
+    }
+
     const openPreviewModal = (image: Image) => {
-      selectedImage.value = image;
-      showPreviewModal.value = true;
-    };
-    
+      selectedImage.value = image
+      showPreviewModal.value = true
+    }
+
     const handleFileUpload = (event: Event) => {
-      const target = event.target as HTMLInputElement;
+      const target = event.target as HTMLInputElement
       if (target.files && target.files[0]) {
-        const file = target.files[0];
-        const reader = new FileReader();
-        
+        const file = target.files[0]
+        const reader = new FileReader()
+
         reader.onload = (e) => {
-          previewImage.value = e.target?.result as string;
-        };
-        
-        reader.readAsDataURL(file);
+          previewImage.value = e.target?.result as string
+        }
+
+        reader.readAsDataURL(file)
       }
-    };
-    
+    }
+
     const uploadImage = () => {
       if (previewImage.value) {
         // In a real app, you would upload the image to a server
@@ -167,39 +167,39 @@ export default {
           url: previewImage.value,
           size: '1.0 MB',
           type: 'jpg'
-        };
-        
-        images.push(newImage);
-        showUploadModal.value = false;
-        previewImage.value = null;
-        
+        }
+
+        images.push(newImage)
+        showUploadModal.value = false
+        previewImage.value = null
+
         // Reset file input
         if (fileInput.value) {
-          fileInput.value.value = '';
+          fileInput.value.value = ''
         }
       }
-    };
-    
+    }
+
     const editImage = (image: Image) => {
       // In a real app, you would open an edit modal
-      console.log('Edit image:', image);
-    };
-    
+      console.log('Edit image:', image)
+    }
+
     const deleteImage = (index: number) => {
       if (confirm('Are you sure you want to delete this image?')) {
-        images.splice(index, 1);
+        images.splice(index, 1)
       }
-    };
-    
+    }
+
     const downloadImage = (image: Image | null) => {
       if (image) {
-        const link = document.createElement('a');
-        link.href = image.url;
-        link.download = image.name;
-        link.click();
+        const link = document.createElement('a')
+        link.href = image.url
+        link.download = image.name
+        link.click()
       }
-    };
-    
+    }
+
     return {
       showUploadModal,
       showPreviewModal,
@@ -214,9 +214,9 @@ export default {
       editImage,
       deleteImage,
       downloadImage
-    };
+    }
   }
-};
+}
 </script>
 
 <style scoped>
@@ -498,17 +498,17 @@ export default {
   .data-view {
     padding: 10px;
   }
-  
+
   .header {
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
   }
-  
+
   .image-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   }
-  
+
   .modal-content {
     width: 95%;
   }

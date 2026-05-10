@@ -1,6 +1,7 @@
 <template>
   <div class="dashboard">
     <div>title</div>
+
     <LineChat :domId="id" :height="280" width="100%" />
 
     <p>pie</p>
@@ -8,10 +9,19 @@
   </div>
 </template>
 <script lang="ts" setup>
-import { useId, computed } from 'vue'
-import LineChat from '@/components/LineChat.vue'
-import PieChart from '@/components/PieChart.vue'
+import { useId, computed, defineAsyncComponent, h } from 'vue'
+import Loading from '@/components/Loading.vue'
 
+const LineChat = defineAsyncComponent({
+  loader: () => import('@/components/LineChat.vue'),
+  loadingComponent: () => h(Loading, { text: 'loading line chat', height: '280px' }),
+  errorComponent: () => h('div', {}, 'error')
+})
+const PieChart = defineAsyncComponent({
+  loader: () => import('@/components/PieChart.vue'),
+  loadingComponent: () => h(Loading, { text: 'loading pie chart', height: '280px' }),
+  errorComponent: () => h('div', {}, 'error')
+})
 const id = useId()
 
 const pieChartId = computed(() => id + '-pie')
