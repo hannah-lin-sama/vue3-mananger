@@ -10,7 +10,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { useRouter } from 'vue-router'
+import { useRouter, onBeforeRouteUpdate, onBeforeRouteLeave } from 'vue-router'
 const router = useRouter()
 
 const handleClick = () => {
@@ -32,20 +32,30 @@ const handleClick3 = () => {
   router.push('/data-view')
 }
 
+onBeforeRouteUpdate((to, from) => {
+  console.log('user-view-onupdate', to, from)
+  return true
+})
+
+onBeforeRouteLeave((to, from) => {
+  console.log('user-view-onleave', to, from)
+  return true
+})
+
 defineOptions({
   name: 'UserView',
   // 路由进入守卫
   beforeRouteEnter(to, from) {
-    console.log('user-view-enter', to)
+    console.log('user-view-enter', to, from)
     return true
   },
   beforeRouteUpdate(to, from) {
-    console.log('user-view-update', to)
+    console.log('user-view-update', to, from)
     return true
   },
   // 路由离开守卫
   beforeRouteLeave(to, from) {
-    console.log('user-view-leave', to)
+    console.log('user-view-leave', to, from)
     return true
   }
 })

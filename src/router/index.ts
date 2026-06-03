@@ -1,4 +1,10 @@
-import { createRouter, createWebHistory, createRouterMatcher } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory,
+  // createRouterMatcher,
+  type RouterOptions,
+  type RouteRecordRaw
+} from 'vue-router'
 
 const history = createWebHistory(import.meta.env.VITE_BASE_URL)
 // const history = createWebHashHistory('#');
@@ -7,7 +13,7 @@ const history = createWebHistory(import.meta.env.VITE_BASE_URL)
 
 const dataView = Symbol('data-view')
 
-const routes = [
+const routes: RouteRecordRaw[] = [
   {
     path: '/',
     name: 'index',
@@ -29,7 +35,7 @@ const routes = [
         }
       },
       {
-        path: '/lists/:type?',
+        path: 'lists/:type?',
         name: 'lists',
         component: () => import('@/views/lists/ListView.vue'),
         meta: {
@@ -52,7 +58,7 @@ const routes = [
         }
       },
       {
-        path: '/user',
+        path: 'user',
         name: 'user',
         component: () => import('@/views/user/UserView.vue'),
         meta: {
@@ -66,7 +72,7 @@ const routes = [
             path: 'lists',
             name: 'user-list',
             component: () => import('@/views/user/UserList.vue'),
-            beforeEnter: (to, from) => {
+            beforeEnter: (to: any, from: any) => {
               console.log('user-list独享路由', to, from)
               return true
             }
@@ -75,19 +81,19 @@ const routes = [
             path: ':id',
             // name: 'user-detail',
             component: () => import('@/views/user/UserDetail.vue'),
-            beforeEnter: (to, from) => {
+            beforeEnter: (to: any, from: any) => {
               console.log('user-detail独享路由', to, from)
               return true
             }
           }
         ],
-        beforeEnter: (to, from) => {
+        beforeEnter: (to: any, from: any) => {
           console.log('user-view独享路由', to, from)
           return true
         }
       },
       {
-        path: '/role',
+        path: 'role',
         name: 'role',
         component: () => import('@/views/role/RoleView.vue'),
         meta: {
@@ -97,7 +103,7 @@ const routes = [
         }
       },
       {
-        path: '/role/:id',
+        path: 'role/:id',
         name: 'role-detail',
         component: () => import('@/views/role/RoleDetail.vue'),
         meta: {
@@ -107,7 +113,7 @@ const routes = [
         }
       },
       {
-        path: '/dashboard',
+        path: 'dashboard',
         name: 'dashboard',
         component: () => import('@/views/dashboard/DashBoard.vue'),
         meta: {
@@ -115,26 +121,21 @@ const routes = [
           icon: 'dashboard',
           roles: ['admin', 'user']
         },
-        // beforeEnter: (to, from) => {
-        //   console.log('beforeEnter-to', to)
-        //   console.log('beforeEnter-from', from)
-        //   return true
-        // },
         beforeEnter: [
-          (to, from) => {
-            // console.log('beforeEnter-111to', to)
-            // console.log('beforeEnter-f111rom', from)
+          (to: any, from: any) => {
+            console.log('beforeEnter-111to', to)
+            console.log('beforeEnter-f111rom', from)
             return true
           },
-          (to, from) => {
-            // console.log('beforeEnter-222to', to)
-            // console.log('beforeEnter-222from', from)
+          (to: any, from: any) => {
+            console.log('beforeEnter-222to', to)
+            console.log('beforeEnter-222from', from)
             return true
           }
         ]
       },
       {
-        path: '/data-view',
+        path: 'data-view',
         name: dataView,
         component: () => import('@/views/dataview/DataView.vue'),
         meta: {
@@ -156,6 +157,15 @@ const routes = [
     meta: {
       title: '404 Not Found',
       icon: '404'
+    }
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login/index.vue'),
+    meta: {
+      title: 'Login',
+      icon: 'login'
     }
   }
 ]
@@ -205,42 +215,32 @@ console.log("matchers-record", matchers.getRoutes());
 
 const router = createRouter({
   history,
-  // scrollBehavior(to, from, savedPosition) {
-  //   console.log('to', to)
-  //   console.log('from', from)
-  //   console.log('savedPosition', savedPosition)
-  //   return { top: 0 }
-  // },
   sensitive: true, // 路由是否大小写敏感
   strict: true, // 路由是否严格匹配路径
   linkActiveClass: 'active', // 链接激活时的类名
   linkExactActiveClass: 'exact-active', // 链接严格激活时的类名
-  // parseQuery(query: string) {
-  // },
-  // stringifyQuery(obj: Record<string, string>) {
-  // },
   routes
-})
+} as RouterOptions)
 
 // 全局前置守卫
 router.beforeEach((to, from) => {
-  // console.log("全局前置守卫", to, from);
+  console.log('全局前置守卫', to, from)
   return true
 })
 
 // 全局解析守卫
 router.beforeResolve((to, from) => {
-  // console.log("全局解析守卫", to, from);
+  console.log('全局解析守卫', to, from)
   return true
 })
 
 // 全局后置守卫
 router.afterEach((to, from, failure) => {
   if (failure) {
-    // console.log("全局后置守卫-failure", failure);
+    console.log('全局后置守卫-failure', failure)
     return
   }
-  // console.log("全局后置守卫", to, from);
+  console.log('全局后置守卫', to, from)
   document.title = to.meta.title ? `Vue3 管理端 ｜ ${to.meta.title}` : `Vue3 管理端`
 })
 

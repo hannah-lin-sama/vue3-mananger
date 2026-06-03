@@ -7,7 +7,9 @@ const router = useRouter()
 
 const changeHandler = (path: string) => {
   console.log('changeHandler', path)
-  router.push(path)
+  router.push({
+    path
+  })
 }
 
 defineOptions({
