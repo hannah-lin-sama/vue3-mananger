@@ -279,6 +279,10 @@ onUnmounted(() => {
   if (qrTimer) clearInterval(qrTimer)
   if (codeTimer) clearInterval(codeTimer)
 })
+
+defineOptions({
+  name: 'LoginView'
+})
 </script>
 
 <style scoped>

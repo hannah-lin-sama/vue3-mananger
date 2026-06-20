@@ -24,6 +24,12 @@ export const MENU_DATA = [
     access: 'role'
   },
   {
+    id: 'article',
+    label: '文章管理',
+    path: '/article/lists',
+    access: 'article'
+  },
+  {
     id: 'lists',
     label: 'lists',
     path: '/lists',

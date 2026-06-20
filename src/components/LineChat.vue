@@ -2,9 +2,9 @@
   <div :id="domId" :style="`height: ${props.height}px; width: 100%`"></div>
 </template>
 <script setup lang="ts">
-import { onMounted } from 'vue'
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 import * as echarts from 'echarts/core'
-import { BarChart, LineChart } from 'echarts/charts'
+import { LineChart } from 'echarts/charts'
 import {
   TitleComponent,
   TooltipComponent,
@@ -15,7 +15,7 @@ import {
   TransformComponent,
   LegendComponent
 } from 'echarts/components'
-import { LabelLayout, UniversalTransition } from 'echarts/features'
+import { LabelLayout } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
 import type {
   // 系列类型的定义后缀都为 SeriesOption
@@ -26,7 +26,6 @@ import type {
   // 组件类型的定义后缀都为 ComponentOption
   TitleComponentOption,
   TooltipComponentOption,
-  GridComponentOption,
   DatasetComponentOption,
   LegendComponentOption
 } from 'echarts/components'
@@ -117,11 +116,18 @@ const props = defineProps({
   }
 })
 
+const chart = ref<any>(null)
+
 onMounted(() => {
+  console.log('---mountd--')
   // 接下来的使用就跟之前一样，初始化图表，设置配置项
-  var myChart = echarts.init(document.getElementById(props.domId))
-  myChart.setOption({
+  chart.value = echarts.init(document.getElementById(props.domId))
+  chart.value.setOption({
     ...option
   })
+})
+
+onBeforeUnmount(() => {
+  // chart.current.dispose();
 })
 </script>

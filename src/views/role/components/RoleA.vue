@@ -10,6 +10,7 @@
 import { ref, onBeforeUnmount } from 'vue'
 export default {
   name: 'RoleA',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setup(props, { emit, slots, expose, attrs }) {
     // console.log("RoleAView setup", props);
     const handleClick = () => {

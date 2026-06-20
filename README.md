@@ -70,3 +70,5 @@ Axios 遭受了严重的供应链投毒攻击‌
 ```bash
 npm install --ignore-scripts
 ```
+
+@wangeditor/editor-for-vue vue2组件

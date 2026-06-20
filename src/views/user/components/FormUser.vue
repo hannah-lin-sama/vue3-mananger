@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ElForm } from 'element-plus/es/components/form'
+import { ElForm } from 'element-plus'
 import { reactive, ref } from 'vue'
 
 // 获取父组件传递的props

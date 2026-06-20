@@ -28,6 +28,7 @@ export default {
     RoleA,
     RoleB
   },
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setup(props, { emit, slots, expose, attrs }) {
     console.log('RoleView setup', props)
     const currentView = ref(false)

@@ -71,7 +71,7 @@ const routes: RouteRecordRaw[] = [
           {
             path: 'lists',
             name: 'user-list',
-            component: () => import('@/views/user/UserList.vue'),
+            component: () => import('@/views/user/UserList.vue' as string),
             beforeEnter: (to: any, from: any) => {
               console.log('user-list独享路由', to, from)
               return true
@@ -111,6 +111,47 @@ const routes: RouteRecordRaw[] = [
           icon: 'role-detail',
           roles: ['admin']
         }
+      },
+      {
+        path: 'article',
+        name: 'article',
+        component: () => import('@/views/article/ArticleView.vue'),
+        meta: {
+          title: '文章管理',
+          icon: 'article',
+          roles: ['admin', 'user']
+        },
+        children: [
+          {
+            path: 'lists',
+            name: 'article-list',
+            component: () => import('@/views/article/ArticleList.vue'),
+            beforeEnter: (to: any, from: any) => {
+              console.log('article-list独享路由', to, from)
+              return true
+            }
+          },
+          {
+            path: 'add',
+            name: 'article-add',
+            component: () => import('@/views/article/ArticleForm.vue'),
+            meta: {
+              title: '新增文章',
+              icon: 'article-add',
+              roles: ['admin', 'user']
+            }
+          },
+          {
+            path: 'edit/:id',
+            name: 'article-edit',
+            component: () => import('@/views/article/ArticleForm.vue'),
+            meta: {
+              title: '编辑文章',
+              icon: 'article-edit',
+              roles: ['admin', 'user']
+            }
+          }
+        ]
       },
       {
         path: 'dashboard',

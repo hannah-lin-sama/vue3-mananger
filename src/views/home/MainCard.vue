@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
-import { ElCard, ElSpace } from 'element-plus'
+import { ElCard, ElSpace, ElButton } from 'element-plus'
 const router = useRouter()
 const list = [
   {

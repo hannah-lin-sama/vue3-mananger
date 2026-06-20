@@ -15,7 +15,7 @@ import {
   TransformComponent,
   LegendComponent
 } from 'echarts/components'
-import { LabelLayout, UniversalTransition } from 'echarts/features'
+import { LabelLayout } from 'echarts/features'
 import { CanvasRenderer } from 'echarts/renderers'
 import type {
   // 系列类型的定义后缀都为 SeriesOption
@@ -27,7 +27,6 @@ import type {
   // 组件类型的定义后缀都为 ComponentOption
   TitleComponentOption,
   TooltipComponentOption,
-  GridComponentOption,
   DatasetComponentOption,
   LegendComponentOption
 } from 'echarts/components'

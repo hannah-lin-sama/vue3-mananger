@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import { MENU_DATA } from '@/constants'
-import { useRouter } from 'vue-router'
-import { ElMenu, ElMenuItem } from 'element-plus'
+import { MENU_DATA } from "@/constants";
+import { useRouter } from "vue-router";
+import { ElMenu, ElMenuItem } from "element-plus";
 
-const router = useRouter()
+const router = useRouter();
 
 const changeHandler = (path: string) => {
-  console.log('changeHandler', path)
+  console.log("changeHandler", path);
   router.push({
-    path
-  })
-}
+    path,
+  });
+};
 
 defineOptions({
-  name: 'LeftMenu'
-})
+  name: "LeftMenu",
+});
 </script>
 
 <template>

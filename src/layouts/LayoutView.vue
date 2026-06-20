@@ -15,10 +15,10 @@
   </main>
 </template>
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
-import LeftMenu from './components/LeftMenu/index.vue'
-import { ElContainer, ElAside, ElHeader, ElMain } from 'element-plus'
-window.addEventListener('popstate', () => {
-  console.log('popstate---')
-})
+import { RouterView } from "vue-router";
+import LeftMenu from "./components/LeftMenu.vue";
+import { ElContainer, ElAside, ElHeader, ElMain } from "element-plus";
+// window.addEventListener('popstate', () => {
+//   console.log('popstate---')
+// })
 </script>

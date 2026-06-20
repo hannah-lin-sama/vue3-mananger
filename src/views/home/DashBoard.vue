@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard">
-    <LineChat></LineChat>
+    <LineChat :domId="id"></LineChat>
     <p>Welcome to the Dashboard</p>
   </div>
 </template>
